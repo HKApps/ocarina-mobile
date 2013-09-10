@@ -1,6 +1,10 @@
 # Declare app level module which depends on filters, and services
-@myApp = angular
-  .module("myApp", ["myServices", "myFilters", "myDirectives", "ngRoute"])
+@ocarinaMobile = angular
+  .module("ocarinaMobile", [
+    "ocarinaServices",
+    "ocarinaFilters",
+    "ocarinaDirectives",
+    "ngRoute"])
   .config ["$locationProvider", "$routeProvider",
     ($locationProvider, $routeProvider) ->
       $locationProvider.html5Mode true

@@ -1,1 +1,1 @@
-myServices = angular.module('myServices', [])
+ocarinaServices = angular.module('ocarinaServices', [])

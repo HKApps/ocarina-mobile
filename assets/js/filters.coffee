@@ -1,1 +1,1 @@
-myFilters = angular.module('myFilters', [])
+ocarinaFilters = angular.module('ocarinaFilters', [])

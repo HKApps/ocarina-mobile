@@ -1,1 +1,1 @@
-myDirectives = angular.module('myDirectives', [])
+ocarinaDirectives = angular.module('ocarinaDirectives', [])
