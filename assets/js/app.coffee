@@ -1,7 +1,11 @@
+##
 # require files
-#= require lib/tools/lodash.min
+#= require lib/tools/snap
+#= require lib/tools/ratchet
+#= require lib/tools/lodash
 #= require lib/angular/angular
 #= require lib/angular/angular-route
+#= require lib/tools/angular-snap
 #= require controllers
 #= require services
 #= require filters
@@ -14,7 +18,8 @@
     "ocarinaServices",
     "ocarinaFilters",
     "ocarinaDirectives",
-    "ngRoute"])
+    "ngRoute",
+    "snap"])
   .config ["$locationProvider", "$routeProvider",
     ($locationProvider, $routeProvider) ->
       $locationProvider.html5Mode true

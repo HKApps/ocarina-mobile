@@ -1,14 +1,21 @@
 extends layout
 
 block body
-  div
-    h2 Hello
-    ul.menu
-      li
-        a(href='view1') view1
-      li
-        a(href='view2') view2
-
-    div(ng-view)
+  .ng-cloak.shelf-left(snap_drawer)
+    .user
+      // img.avatar(ng_src='{{currentUser.image}}')
+      // .name {{currentUser.first_name + " " + currentUser.last_name}}
+    .navigation
+      .home Home
+      .favorites Favorites
+      .logout Logout
+  .ng-cloak.container
+    .scrollable(snap_content)
+      header.bar-title
+        button.button(snap_toggle='left')
+          img(src= img('open.png'))
+        a.title(ng_href='/') PlayedBy.me
+      .content
+        div(ng_view)
 
   != js('app')
