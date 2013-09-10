@@ -1,1 +1,25 @@
-p This is the partial for playlists new.
+// TODO add ng_controller
+.create-playlist-container
+  .new-event
+    h2 Create a Playlist
+    form
+      .input-group
+        .input-row.new-event-name
+          label Name
+          input( type="text",
+          ng_model="newPlaylist.name",
+          placeholder="Matt's Birthday" )
+
+        .input-row.new-event-location( ng_show="showLocationInput" )
+          label Location
+          input( type="text",
+          placeholder="current location...",
+          ng_model="newPlaylist.location" )
+
+        .input-row.new-event-private
+          label Password
+          input.form-control( type="text",
+          ng_model="newPlaylist.password",
+          placeholder="enter password to make private" )
+    a.button-block.button-main( ng_click="createPlaylist()" )
+      | Create a Party
