@@ -1,3 +1,13 @@
+# require files
+#= require lib/tools/lodash.min
+#= require lib/angular/angular
+#= require lib/angular/angular-route
+#= require controllers
+#= require services
+#= require filters
+#= require directives
+#= require_self
+
 # Declare app level module which depends on filters, and services
 @ocarinaMobile = angular
   .module("ocarinaMobile", [
