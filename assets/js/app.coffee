@@ -24,11 +24,14 @@
     ($locationProvider, $routeProvider) ->
       $locationProvider.html5Mode true
 
-      $routeProvider.when "/view1",
-        templateUrl: "angular/sample/partial1"
+      $routeProvider.when "/",
+        templateUrl: "angular/index/home"
 
-      $routeProvider.when "/view2",
-        templateUrl: "angular/sample/partial2"
+      $routeProvider.when "/playlists/new",
+        templateUrl: "angular/playlists/new"
 
-      $routeProvider.otherwise redirectTo: "/view1"
+      $routeProvider.when "/playlists/:id",
+        templateUrl: "angular/playlists/show"
+
+      $routeProvider.otherwise redirectTo: "/"
 ]

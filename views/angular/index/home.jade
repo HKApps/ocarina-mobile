@@ -1,0 +1,21 @@
+.home-container( ng_controller= "HomeCtrl" )
+  .create-party
+    a.button-block.button-main( ng_href="/playlists/new" )
+      | Create a Party
+  .event-search
+    h2 Search Events
+    input( type="search",
+    ng_model="query",
+    placeholder="search events...",
+    on_focus="updatePlaylists()" )
+    ul.playlist-list.list( ng_repeat="playlist in playlists | filter:query" )
+      li
+        a( ng_href="/playlists/{{playlist.id}}" )
+          .playlist-name {{playlist.name}}
+          .playlist-host
+            | hosted by
+            img.avatar( ng_src="{{playlist.host.image}}" )
+          .playlist-guests
+            .guests( ng_repeat="guest in playlist.guests" )
+              img.avatar( ng_src="{{guest.image}}" )
+        span.chevron
