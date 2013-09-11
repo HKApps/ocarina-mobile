@@ -1,3 +1,6 @@
+# API URL
+@apiURL = "http://localhost:4400"
+
 ocarinaServices = angular.module('ocarinaServices', [])
 
 ocarinaServices.factory 'Pusher', ->
@@ -16,7 +19,7 @@ ocarinaServices.factory 'Pusher', ->
 #  window.console.log message if window.console and window.console.log
 
 ocarinaServices.factory 'Playlist', ['$http', ($http) ->
-  url = "/api/playlists"
+  url = apiURL + "/api/playlists"
   Playlist = (data) ->
     angular.extend(this, data)
 
@@ -63,7 +66,7 @@ ocarinaServices.factory 'Playlist', ['$http', ($http) ->
 ]
 
 ocarinaServices.factory 'User', ['$http', ($http) ->
-  url = "/api/users"
+  url = apiURL + "/api/users"
   User = (data) ->
     angular.extend(this, data)
 
