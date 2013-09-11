@@ -1,16 +1,16 @@
-// TODO add ctrl and show if playlist
-.playlist-container
+.playlist-container( ng_controller="PlaylistShowCtrl" )
   .addSongsModal.modal( ng_class='{"active": showAddSongs}' )
     header.bar-title
       h1.title Add Songs
       a.button( ng_click="hideAddSongsModal()" )
         | Close
     .content.content-padded
-      p The contents of my modal.
+      .add-songs( ng_include="'angular/playlists/add_songs'" )
 
   // TODO add password lock if not member
 
-  .members-only( ng_if="isMember(currentUser.id)" )
+  // .members-only( ng_if="isMember(currentUser.id)" )
+  .members-only( ng_if="true" )
     a.button-block.button-main( ng_click="showAddSongsModal()" )
       | Add Songs
     .playlist-name

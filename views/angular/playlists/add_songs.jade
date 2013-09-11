@@ -1,0 +1,36 @@
+.add-songs-container( ng_controller="AddSongsCtrl" )
+  .btn-group.toggle-provider
+    button.button( ng_model="provider", btn-radio="'Soundcloud'" )
+      img(ng_src="//soundcloud.com/favicon.ico")
+      | Soundcloud
+    button.button( ng_model="provider", btn-radio="'Dropbox'" )
+      img("https://dt8kf6553cww8.cloudfront.net/static/images/favicon-vflonlsct.ico")
+      | Dropbox
+  .add_songs
+    .add-soundcloud( ng_show="provider == 'Soundcloud'" )
+      .song-filter
+        input( ng_model="scFilter",
+        placeholder="search soundcloud",
+        on_debounced_keyup="searchSc(scFilter)" )
+      .songs-to-add.song-list( ng_repeat="song in scResults",
+      ng_click="toggleSongSelected('soundcloud', song)",
+      ng_class='{"song-in-playlist": songInPlaylist(song), "selected": isSongSelected("soundcloud", song)}' )
+        span.name.wordwrap {{song.title}}
+        i.glyphicon.glyphicon-ok
+    .add-dropbox( ng_show="provider == 'Dropbox'" )
+      .dropbox-connect( ng_hide="currentUser.dropbox_authenticated" )
+        button.btn.btn-primary( dropbox_auth )
+          img#dropbox-logo(src= img('dropbox-logos_dropbox-glyph-white.png'))
+          | Connect with Dropbox
+      .dropbox-connected( ng_show="currentUser.dropbox_authenticated" )
+        .song-filter
+          input( ng_model="dbFilter",
+          placeholder="search your songs" )
+        .songs-to-add.song-list( ng_repeat="song in currentUser.dropbox_songs | filter: dbFilter",
+        ng_click="toggleSongSelected('dropbox', song.id)",
+        ng_class='{"song-in-playlist": songInPlaylist(song.id), "selected": isSongSelected("dropbox", song.id)}' )
+          span.name.wordwrap {{song.name}}
+          i.glyphicon.glyphicon-ok
+  button.button( ng_click="closeAddSongsModal()" ) Cancel
+  button.button( ng_click="clearSelectedSongs()" ) Clear
+  button.button( ng_click="addSelectedSongs()" ) Add Songs

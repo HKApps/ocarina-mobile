@@ -16,7 +16,7 @@ angular
       $routeProvider.when "/playlists/new",
         templateUrl: "angular/playlists/new"
 
-      $routeProvider.when "/playlists/:id",
+      $routeProvider.when "/playlists/:playlistId",
         templateUrl: "angular/playlists/show"
 
       $routeProvider.otherwise redirectTo: "/"
