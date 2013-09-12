@@ -1,0 +1,16 @@
+.player-container( ng_controller="PlaybackCtrl" )
+  .currently-playing.wordwrap( ng_show="playlist.currentSong && isPlayingPlaylist()" )
+    {{playlist.currentSong.song_name}}
+  .playback-controls
+    button.btn.btn-default.control.play( ng_click="playerAction('play')", ng_show="player.state != 'playing' || !isPlayingPlaylist()" )
+      img(src= img('audio_play.png'))
+    button.btn.btn-default.control.pause( ng_click="playerPause()", ng_show="player.state == 'playing' && isPlayingPlaylist()" )
+      img(src= img('audio_pause.png'))
+    button.btn.btn-default.control.skip( ng_click="playerAction('skip')" ) Skip
+  // .progressbar-container( ng_show="playlist.currentSong && isPlayingPlaylist()" )
+  //   .progressbar( seek_progress_bar )
+  //     span.bufferbar
+  //     span.timebar
+  //   .time
+  //     span.current-time
+  //     span.duration

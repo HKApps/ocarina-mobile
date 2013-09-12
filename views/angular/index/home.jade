@@ -4,19 +4,38 @@
     a.button-block.button-main( ng_href="/playlists/new" )
       | Create a Party
   .event-search
-    h2 Search Events
+    h2 Parties Near You
     input( type="search",
     ng_model="query",
-    placeholder="search events...",
+    placeholder="search parties...",
     on_focus="updatePlaylists()" )
     ul.playlist-list.list( ng_repeat="playlist in playlists | filter:query" )
       li
         a( ng_href="/playlists/{{playlist.id}}" )
-          .playlist-name {{playlist.name}}
-          .playlist-host
-            | hosted by
-            img.avatar( ng_src="{{playlist.host.image}}" )
-          .playlist-guests
-            .guests( ng_repeat="guest in playlist.guests" )
-              img.avatar( ng_src="{{guest.image}}" )
+          .primary-info
+            .playlist-name
+              | {{playlist.name}}
+            .playlist-host
+              | hosted by
+              img.avatar( ng_src="{{playlist.host.image}}" )
+            .playlist-guests
+              .guests( ng_repeat="guest in playlist.guests" )
+                img.avatar( ng_src="{{guest.image}}" )
+          .secondary-info
+            .location
+              {{playlist.location))
+        span.chevron
+    // TODO delete this, just an example for style
+    ul.playlist-list.list
+      li
+        a( ng_href="/" )
+          .primary-info
+            .playlist-name
+              | Basil's Party
+            .playlist-host
+              |  hosted by
+              img.avatar( ng_src="{{currentUser.image}}" )
+          .secondary-info
+            .location
+              | 18a Forest St. #43, Cambridge, MA 02140
         span.chevron

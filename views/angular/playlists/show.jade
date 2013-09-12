@@ -7,42 +7,44 @@
     .content.content-padded
       .add-songs( ng_include="'angular/playlists/add_songs'" )
 
-  // TODO add password lock if not member
+  .container
+    // TODO add password lock if not member
 
-  // .members-only( ng_if="isMember(currentUser.id)" )
-  .members-only( ng_if="true" )
-    a.button-block.button-main( ng_click="showAddSongsModal()" )
-      | Add Songs
-    .playlist-name
-      h2 {{playlist.name}}
-      h4
-        | by
-        a( ng_href="/{{playlist.host.id}}" )
-          img.avatar( ng_src="{{playlist.host.image}}" )
+    // .members-only( ng_if="isMember(currentUser.id)" )
+    .members-only( ng_if="true" )
+      a.button-block.button-main( ng_click="showAddSongsModal()" )
+        | Add Songs
+      .playlist-name
+        h2 {{playlist.name}}
+        h4
+          | by
+          a( ng_href="/{{playlist.host.id}}" )
+            img.avatar( ng_src="{{playlist.host.image}}" )
 
-    .played-playlist-songs( ng_show="playlist.played_playlist_songs.length" )
-      .song-list.list.inset( ng_repeat="song in playlist.played_playlist_songs | orderBy:'played_at'" )
-        li.song-info-container
-          b.votes {{song.vote_count}} votes
-            .song-name.wordwrap {{ song.song_name | truncate:60:true:true }}
+      .played-playlist-songs( ng_show="playlist.played_playlist_songs.length" )
+        .song-list.list.inset( ng_repeat="song in playlist.played_playlist_songs | orderBy:'played_at'" )
+          li.song-info-container
+            b.votes {{song.vote_count}} votes
+              .song-name.wordwrap {{ song.song_name | truncate:60:true:true }}
 
-    .player( ng_if="playlist.owner_id == currentUser.id", scroll_to_on_load="" )
-      // TODO include player
+      .owner-container(ng_if="playlist.owner_id == currentUser.id" )
+        .player( ng_include="'angular/playlists/player'" autoscroll )
 
-    // TODO add guest feedback
-    // TODO add loading spinner
+      // TODO add guest feedback
+      // TODO add loading spinner
 
-    .playlist-songs( ng_show="playlist.playlist_songs.length" )
-      .song-list.list.inset( ng_repeat="song in playlist.playlist_songs | orderBy:'vote_count':true" )
-        li.song-info-container
-          b.votes {{song.vote_count}} votes
+      .playlist-songs( ng_show="playlist.playlist_songs.length" )
+        ul.list.inset
+          li.song-info-container( ng_repeat="song in playlist.playlist_songs | orderBy:'vote_count':true" )
+            .votes
+              | {{song.vote_count}}
             .song-name.wordwrap {{ song.song_name | truncate:60:true:true }}
             a.upvote.button( ng_click="upvoteSong(song)",
             ng_class='{"btn-warning": song.current_user_vote_decision == 1}' )
-              | upvote
+              | up
             a.downvote.button( ng_click="downvoteSong(song)",
             ng_class='{"btn-warning": song.current_user_vote_decision == -1}' )
-              | downvote
+              | down
 
-    .playlist-songs.zero-state( ng_hide="playlist.playlist_songs.length" )
-      h4 Your playlist is empty!
+      .playlist-songs.zero-state( ng_hide="playlist.playlist_songs.length" )
+        h4 Your playlist is empty!

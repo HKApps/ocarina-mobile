@@ -1,11 +1,34 @@
-@import 'angular-snap.css'
-@import 'ratchet.css'
+@import 'lib/angular-snap.css'
+@import 'lib/ratchet.css'
+@import 'index/home.styl'
+@import 'playlists/show.styl'
+@import 'playlists/new.styl'
 
 html, body, .scrollable
-  height 100%
-  width 100%
+  height: 100%
+  width: 100%
+  -webkit-user-select: none
+  -moz-user-select: none
 
+.wordwrap{
+  white-space: -moz-pre-wrap /* Firefox */
+  white-space: -pre-wrap     /* Opera <7 */
+  white-space: -o-pre-wrap   /* Opera 7 */
+  word-wrap: break-word;     /* IE */
+}
 
+.container
+  margin-left: 10px
+  margin-right: 10px
+
+.avatar {
+  position: relative
+  height: 30px
+  width: 30px
+  -webkit-border-radius: 50%
+  -moz-border-radius: 50%
+  border-radius: 50%
+}
 
 .scrollable
   background-color #fff
